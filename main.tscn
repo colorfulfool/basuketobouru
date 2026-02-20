@@ -167,6 +167,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ujcbf")
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_lquwl"]
+plane = Plane(0, 23, 0, 0)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_seu75"]
 size = Vector3(12, 2, 10)
 
@@ -319,7 +322,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="Main" type="Node" unique_id=1765919692]
 
-[node name="basketball" type="Node3D" parent="." unique_id=1034035516]
+[node name="basketball" type="StaticBody3D" parent="." unique_id=648732672]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.6569505, 0, -2.569128)
 
 [node name="Goals" type="MeshInstance3D" parent="basketball" unique_id=191879051]
@@ -362,6 +365,22 @@ transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 5.49
 [node name="Fence" parent="basketball" unique_id=520548942 instance=ExtResource("4_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25691986, 0, 0.893634)
 
+[node name="Wall1" type="CollisionShape3D" parent="basketball" unique_id=1517003090]
+transform = Transform3D(-1, 8.742278e-08, -3.8213714e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 0, 0, 4.819438)
+shape = SubResource("WorldBoundaryShape3D_lquwl")
+
+[node name="Wall2" type="CollisionShape3D" parent="basketball" unique_id=1895504653]
+transform = Transform3D(1, 0, -2.8234432e-22, -2.8234432e-22, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3.0193381)
+shape = SubResource("WorldBoundaryShape3D_lquwl")
+
+[node name="Wall3" type="CollisionShape3D" parent="basketball" unique_id=66538052]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, -2.8234432e-22, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106857e-15, -4.779742, 0, -3.0193381)
+shape = SubResource("WorldBoundaryShape3D_lquwl")
+
+[node name="Wall4" type="CollisionShape3D" parent="basketball" unique_id=1101152206]
+transform = Transform3D(-4.371139e-08, -1, 4.371139e-08, -2.8234432e-22, -4.371139e-08, -1, 1, -4.371139e-08, 1.9106857e-15, 5.272648, 0, -3.0193381)
+shape = SubResource("WorldBoundaryShape3D_lquwl")
+
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1596236022]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.4356451, 0, 0)
 
@@ -397,10 +416,10 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 speed = 5
 
 [node name="CameraPivot" type="Marker3D" parent="Player" unique_id=509798063]
-transform = Transform3D(0.5992448, 0.64754796, -0.47073042, -0.00367889, 0.59021837, 0.8072352, 0.8005574, -0.48199973, 0.35606748, 0.06347658, 0.53644323, -0.333457)
+transform = Transform3D(0.59924483, 0.64754796, -0.47073045, -0.2136227, 0.696016, 0.68551224, 0.771538, -0.31023094, 0.5554149, 0.06347658, 0.53644323, -0.333457)
 
 [node name="Camera3D" type="Camera3D" parent="Player/CameraPivot" unique_id=1804477088]
-transform = Transform3D(0.60507625, -0.40964034, 0.68269885, 0.63983464, 0.7604879, -0.1107694, -0.47380856, 0.5038382, 0.7222553, 4.3070955, -1.336977, 3.6438022)
+transform = Transform3D(0.60507625, -0.40964037, 0.6826988, 0.63983464, 0.76048803, -0.11076949, -0.4738086, 0.50383824, 0.7222553, 3.1837676, -0.88529325, 2.8351402)
 size = 12.117
 near = 0.001
 far = 196.1
