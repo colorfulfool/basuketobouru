@@ -46,7 +46,8 @@ shadow_mesh = SubResource("ArrayMesh_3c8yn")
 [sub_resource type="SphereShape3D" id="SphereShape3D_4flbx"]
 radius = 0.19886261
 
-[node name="Player" type="CharacterBody3D" unique_id=1854990470]
+[node name="Player" type="RigidBody3D" unique_id=1446635148]
+mass = 0.5
 script = ExtResource("1_4flbx")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=1782149088]
