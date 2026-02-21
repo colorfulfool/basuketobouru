@@ -7,6 +7,7 @@ extends RigidBody3D
 var target_velocity = Vector3.ZERO
 var start_position: Vector3
 var start_rotation: Basis
+var _reset_requested = false
 
 func _ready() -> void:
 	start_position = global_position
@@ -14,11 +15,15 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset"):
-		global_position = start_position
-		global_transform.basis = start_rotation
-		linear_velocity = Vector3.ZERO
-		angular_velocity = Vector3.ZERO
+		_reset_requested = true
+
+func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	if _reset_requested:
+		state.transform = Transform3D(start_rotation, start_position)
+		state.linear_velocity = Vector3.ZERO
+		state.angular_velocity = Vector3.ZERO
 		target_velocity = Vector3.ZERO
+		_reset_requested = false
 
 func _physics_process(_delta: float) -> void:
 	var direction = Vector3.ZERO
