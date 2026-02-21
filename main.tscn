@@ -475,19 +475,16 @@ mesh = SubResource("ArrayMesh_5vw27")
 transform = Transform3D(1, 0, 0, 0, 0.52408993, -0.85166293, 0, 0.85166293, 0.52408993, 0, -1.8254841e-05, 0.00020091937)
 shadow_enabled = true
 
-[node name="CameraPivot" type="Marker3D" parent="." unique_id=509798063]
-transform = Transform3D(0.771538, -0.31023097, 0.5554149, -0.2136227, 0.696016, 0.68551224, -0.5992449, -0.64754796, 0.47073042, -0.333457, 4.541555, -0.06347656)
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1804477088]
-transform = Transform3D(0.60507625, -0.40964037, 0.6826988, 0.63983464, 0.76048803, -0.11076949, -0.4738086, 0.50383824, 0.7222553, 3.1837676, -0.88529325, 2.8351402)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1804477088]
+transform = Transform3D(0, -0.2588192, 1, 0, 1, 0.2588192, -1, 0, 0, 3.517948, 4.3153043, 0)
 size = 12.117
 near = 0.001
 far = 535.8
 
 [node name="BehindText" type="Label3D" parent="." unique_id=2136348632]
-transform = Transform3D(-1.7477149e-06, 0, 39.98306, 0, 39.98306, 0, -39.98306, 0, -1.7477149e-06, -30.477112, 13.579779, 0)
+transform = Transform3D(-1.7477149e-06, 0, 39.98306, 0, 39.98306, 0, -39.98306, 0, -1.7477149e-06, -30.477112, 14.338106, 0)
 outline_modulate = Color(0, 0, 0, 0)
-text = "べスケットボール"
+text = "basketball"
 font = SubResource("FontVariation_5vw27")
 uppercase = true
 script = ExtResource("8_5vw27")
