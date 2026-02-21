@@ -29,20 +29,8 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		_reset_requested = false
 
 func get_input_direction() -> Vector3:
-	var joy_input = Input.get_vector("move_right", "move_left", "move_back", "move_forward")
-	if joy_input != Vector2.ZERO:
-		return Vector3(joy_input.x, 0, joy_input.y)
-	
-	var direction = Vector3.ZERO
-	if Input.is_action_pressed("move_right"):
-		direction.x -= 1
-	if Input.is_action_pressed("move_left"):
-		direction.x += 1
-	if Input.is_action_pressed("move_back"):
-		direction.z -= 1
-	if Input.is_action_pressed("move_forward"):
-		direction.z += 1
-	return direction
+	var input = Input.get_vector("move_right", "move_left", "move_back", "move_forward")
+	return Vector3(input.x, 0, input.y)
 
 func _physics_process(_delta: float) -> void:
 	var direction = get_input_direction()
