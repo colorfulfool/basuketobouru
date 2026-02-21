@@ -15,7 +15,7 @@ func calculate_text():
 		if !has_jumped:
 			return "A to jump"
 		if !has_reset:
-			return "Menu to reset"
+			return "B to reset"
 		return ""
 	else:
 		if !has_moved:
