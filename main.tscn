@@ -324,6 +324,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="basketball" type="StaticBody3D" parent="." unique_id=648732672]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.6569505, 0, -2.569128)
+collision_mask = 0
 
 [node name="Goals" type="MeshInstance3D" parent="basketball" unique_id=191879051]
 transform = Transform3D(-1, 1.2795158e-06, 0, 0, 0, 1, 1.2795158e-06, 1, 0, 4.64664, -1.15966795e-05, 0.8783417)
@@ -383,6 +384,7 @@ shape = SubResource("WorldBoundaryShape3D_lquwl")
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1596236022]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.4356451, 0, 0)
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1074566576]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00133, 0)
