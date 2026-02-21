@@ -3,15 +3,18 @@ extends RigidBody3D
 @export var speed = 14
 @export var jump_impulse = 5
 @export var fall_acceleration = 75
+@export var min_scale = 0.5
 
 var target_velocity = Vector3.ZERO
 var start_position: Vector3
 var start_rotation: Basis
+var start_scale: Vector3
 var _reset_requested = false
 
 func _ready() -> void:
 	start_position = global_position
 	start_rotation = global_transform.basis
+	start_scale = $Pivot/GeoSphere014.scale
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset"):
@@ -36,7 +39,11 @@ func _physics_process(_delta: float) -> void:
 		direction.z -= 1
 	if Input.is_action_pressed("move_forward"):
 		direction.z += 1
+	if Input.is_action_pressed("jump"):
+		if $Pivot/GeoSphere014.scale.z > min_scale:
+			$Pivot/GeoSphere014.scale -= Vector3(0.05,0.05,0.05)
 	if Input.is_action_just_released("jump"):
+		$Pivot/GeoSphere014.scale = start_scale
 		linear_velocity.y = jump_impulse
 		
 	if direction != Vector3.ZERO:

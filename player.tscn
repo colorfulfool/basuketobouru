@@ -50,6 +50,7 @@ radius = 0.19886261
 collision_layer = 2
 mass = 0.5
 script = ExtResource("1_4flbx")
+min_scale = 2.5
 
 [node name="Pivot" type="Node3D" parent="." unique_id=1782149088]
 

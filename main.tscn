@@ -425,6 +425,7 @@ far = 196.1
 [node name="Player" parent="." unique_id=1854990470 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 4, 0)
 speed = 6
+jump_impulse = 7
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=255734873]
 environment = SubResource("Environment_ig7tw")
