@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0ogirf0v8pvo" path="res://street_light.res" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://lf0j5lcpdlb2" path="res://fence.res" id="4_lquwl"]
 [ext_resource type="Texture2D" uid="uid://gsyvxv4y2u64" path="res://free-skybox-anime-sky/textures/clouds_anime_6k.jpg" id="7_272bh"]
+[ext_resource type="Script" uid="uid://d32swsqum7va1" path="res://behind_text.gd" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://dsuo1bu22raw5" path="res://skybox.gd" id="8_skybox"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x77a1"]
@@ -358,6 +359,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_scc4c")
 
+[sub_resource type="SystemFont" id="SystemFont_272bh"]
+
+[sub_resource type="FontVariation" id="FontVariation_5vw27"]
+base_font = SubResource("SystemFont_272bh")
+variation_embolden = 1.25
+
 [node name="Main" type="Node" unique_id=1765919692]
 
 [node name="basketball" type="StaticBody3D" parent="." unique_id=648732672]
@@ -447,10 +454,6 @@ mesh = SubResource("ArrayMesh_4k2k6")
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0.006779194, 0.004998169, 0.009346008)
 mesh = SubResource("ArrayMesh_0rl1p")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=524850182]
-transform = Transform3D(1, 0, 0, 0, 0.8516629, 0.52409005, 0, -0.52409005, 0.8516629, 0, 10.045967, 0.9127407)
-shadow_enabled = true
-
 [node name="Player" parent="." unique_id=1854990470 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 4, 0)
 speed = 10
@@ -459,11 +462,18 @@ jump_impulse = 7
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=255734873]
 environment = SubResource("Environment_ig7tw")
 
-[node name="Skybox" type="MeshInstance3D" parent="." unique_id=2131726790]
+[node name="Heavens" type="Node3D" parent="." unique_id=1676420091]
 transform = Transform3D(50000, 0, 0, 0, -0.0059604645, 49999.996, 0, -49999.996, -0.0059604645, 0, 0, 0)
-mesh = SubResource("ArrayMesh_5vw27")
 script = ExtResource("8_skybox")
 rotation_speed = 0.02
+
+[node name="Skybox" type="MeshInstance3D" parent="Heavens" unique_id=2131726790]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
+mesh = SubResource("ArrayMesh_5vw27")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Heavens" unique_id=524850182]
+transform = Transform3D(1, 0, 0, 0, 0.52408993, -0.85166293, 0, 0.85166293, 0.52408993, 0, -1.8254841e-05, 0.00020091937)
+shadow_enabled = true
 
 [node name="CameraPivot" type="Marker3D" parent="." unique_id=509798063]
 transform = Transform3D(0.771538, -0.31023097, 0.5554149, -0.2136227, 0.696016, 0.68551224, -0.5992449, -0.64754796, 0.47073042, -0.333457, 4.541555, -0.06347656)
@@ -473,3 +483,11 @@ transform = Transform3D(0.60507625, -0.40964037, 0.6826988, 0.63983464, 0.760488
 size = 12.117
 near = 0.001
 far = 535.8
+
+[node name="BehindText" type="Label3D" parent="." unique_id=2136348632]
+transform = Transform3D(-1.7477149e-06, 0, 39.98306, 0, 39.98306, 0, -39.98306, 0, -1.7477149e-06, -30.477112, 13.579779, 0)
+outline_modulate = Color(0, 0, 0, 0)
+text = "べスケットボール"
+font = SubResource("FontVariation_5vw27")
+uppercase = true
+script = ExtResource("8_5vw27")

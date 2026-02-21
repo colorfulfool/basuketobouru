@@ -1,4 +1,4 @@
-extends MeshInstance3D
+extends Node3D
 
 @export var rotation_speed := 0.01
 
