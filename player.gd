@@ -28,9 +28,12 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		target_velocity = Vector3.ZERO
 		_reset_requested = false
 
-func _physics_process(_delta: float) -> void:
-	var direction = Vector3.ZERO
+func get_input_direction() -> Vector3:
+	var joy_input = Input.get_vector("move_right", "move_left", "move_back", "move_forward")
+	if joy_input != Vector2.ZERO:
+		return Vector3(joy_input.x, 0, joy_input.y)
 	
+	var direction = Vector3.ZERO
 	if Input.is_action_pressed("move_right"):
 		direction.x -= 1
 	if Input.is_action_pressed("move_left"):
@@ -39,6 +42,11 @@ func _physics_process(_delta: float) -> void:
 		direction.z -= 1
 	if Input.is_action_pressed("move_forward"):
 		direction.z += 1
+	return direction
+
+func _physics_process(_delta: float) -> void:
+	var direction = get_input_direction()
+	
 	if Input.is_action_pressed("jump"):
 		if $Pivot/GeoSphere014.scale.z > min_scale:
 			$Pivot/GeoSphere014.scale -= Vector3(0.05,0.05,0.05)
@@ -46,13 +54,13 @@ func _physics_process(_delta: float) -> void:
 		$Pivot/GeoSphere014.scale = start_scale
 		linear_velocity.y = jump_impulse
 		
+	var input_strength = direction.length()
+	
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
 		$Pivot.basis = Basis.looking_at(direction)
 		
-	# direction = global_transform.basis * direction
-		
-	target_velocity.x = direction.x * speed
-	target_velocity.z = direction.z * speed
+	target_velocity.x = direction.x * speed * input_strength
+	target_velocity.z = direction.z * speed * input_strength
 	
 	angular_velocity = target_velocity
